@@ -78,7 +78,7 @@ public class MetroMenuController {
     @RequestMapping("rechargeCard")
     public ModelAndView rechargeController(HttpSession session) {
         ModelAndView modelAndView = new ModelAndView("cardRecharge", "card", cardService.getCardDetails(((Card) session.getAttribute("card")).getCardId()));
-        return modelAndView.addObject("amount",new Amount());
+        return modelAndView.addObject("amount", new Amount());
 
     }
 
@@ -86,26 +86,23 @@ public class MetroMenuController {
     @RequestMapping("passwordChange")
     public ModelAndView passwordChangeController(HttpSession session) {
         ModelAndView modelAndView = new ModelAndView("metroChangePassword", "card", cardService.getCardDetails(((Card) session.getAttribute("card")).getCardId()));
-        return modelAndView.addObject("password",new Password());
+        return modelAndView.addObject("password", new Password());
 
     }
 
     @RequestMapping("topUpCard")
     public ModelAndView topUpController(@Valid @ModelAttribute("amount") Amount amount, BindingResult result, HttpSession session) {
         ModelAndView modelAndView = new ModelAndView("cardRechargeOutput", "card", session.getAttribute("card"));
-        if(result.hasErrors()) {
-            return new ModelAndView("cardRecharge","command",new Amount());
+        if (result.hasErrors()) {
+            return new ModelAndView("cardRecharge", "command", new Amount());
         }
-//        if (amount.matches("[0-9]+")) {
-        int intAmount = amount.getAmount();/*Integer.parseInt(amount)*/
+        int intAmount = amount.getAmount();
         if (0 < intAmount && intAmount <= 1000) {
-            if (cardService.rechargeCard(((Card) session.getAttribute("card")).getCardId(), intAmount)){
+            if (cardService.rechargeCard(((Card) session.getAttribute("card")).getCardId(), intAmount)) {
                 setSession(cardService.getCardDetails(((Card) session.getAttribute("card")).getCardId()));
                 modelAndView.addObject("message", " Recharge Successful, Current Balance is :" + cardService.getBalance(((Card) session.getAttribute("card")).getCardId()));
-            }
-            else modelAndView.addObject("message", "Recharge Failed, Try Again");
+            } else modelAndView.addObject("message", "Recharge Failed, Try Again");
         } else modelAndView.addObject("message", "Invalid Range, Permitted Range [1 to 1000]");
-//        } else modelAndView.addObject("message", "Invalid Amount");
         return modelAndView;
     }
 
@@ -141,20 +138,21 @@ public class MetroMenuController {
         modelAndView.addObject("stations", stationService.getAllStations());
         return modelAndView;
     }
+
     @RequestMapping("changePassword")
     public ModelAndView passwordController(@Valid @ModelAttribute("password") Password password, BindingResult result, HttpSession session) {
         ModelAndView modelAndView = new ModelAndView("metroPasswordChangeOutput", "card", session.getAttribute("card"));
-        if(result.hasErrors()) {
-            return new ModelAndView("metroChangePassword","command",new Password());
+        if (result.hasErrors()) {
+            return new ModelAndView("metroChangePassword", "command", new Password());
         }
-            if (cardService.validatePassword(((Card)session.getAttribute("card")).getCardId(), password.getOldPassword())) {
-                if (password.getNewPasswordOne().equals(password.getNewPasswordTwo())) {
-                    if (cardService.setPassword(((Card)session.getAttribute("card")).getCardId(), password.getNewPasswordOne()))
-                        modelAndView.addObject("message","Password Updated Successfully");
-                } else modelAndView.addObject("message","Passwords Didn't Match, Try Again");
-            } else modelAndView.addObject("message","You Have Entered a Wrong Password");
-            return modelAndView;
-        }
+        if (cardService.validatePassword(((Card) session.getAttribute("card")).getCardId(), password.getOldPassword())) {
+            if (password.getNewPasswordOne().equals(password.getNewPasswordTwo())) {
+                if (cardService.setPassword(((Card) session.getAttribute("card")).getCardId(), password.getNewPasswordOne()))
+                    modelAndView.addObject("message", "Password Updated Successfully");
+            } else modelAndView.addObject("message", "Passwords Didn't Match, Try Again");
+        } else modelAndView.addObject("message", "You Have Entered a Wrong Password");
+        return modelAndView;
+    }
 
 
     @RequestMapping("cardSwipeOut")
