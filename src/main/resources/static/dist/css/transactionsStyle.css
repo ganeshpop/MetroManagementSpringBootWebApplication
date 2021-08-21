@@ -1,0 +1,197 @@
+
+
+
+/*//////////////////////////////////////////////////////////////////
+[ RESTYLE TAG ]*/
+.transactions {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+
+
+input {
+    display: block;
+    outline: none;
+    border: none !important;
+}
+
+textarea {
+    display: block;
+    outline: none;
+}
+
+textarea:focus, input:focus {
+    border-color: transparent !important;
+}
+
+/* ------------------------------------ */
+button {
+    outline: none !important;
+    border: none;
+    background: transparent;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+iframe {
+    border: none !important;
+}
+
+/*//////////////////////////////////////////////////////////////////
+[ Scroll bar ]*/
+.js-pscroll {
+    position: relative;
+    overflow: hidden;
+}
+
+
+/*//////////////////////////////////////////////////////////////////
+[ Table ]*/
+
+.limiter {
+    width: 1500px;
+    margin: 0 auto;
+}
+
+.container-table100 {
+    width: 100%;
+    min-height: 100vh;
+    background: #fff;
+
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 33px 30px;
+}
+
+.wrap-table100 {
+    width: 1500px;
+}
+
+/*//////////////////////////////////////////////////////////////////
+[ Table ]*/
+.table100 {
+    background-color: #fff;
+}
+
+table {
+    width: 100%;
+}
+
+th, td {
+    font-weight: unset;
+    text-align: center;
+
+}
+
+.column1 {
+    width:7%;
+    padding-left: 0px;
+
+}
+
+.column2 {
+    width: 10%;
+}
+
+.column3 {
+    width: 10%;
+}
+
+.column4 {
+    width: 10%;
+}
+
+.column5 {
+    width: 10%;
+}
+.column6 {
+    width: 9%;
+}
+.column7 {
+    width: 7%;
+}
+.column8 {
+    width: 7%;
+}
+.column9 {
+    width: 7%;
+}
+
+.table100-head th {
+    padding-top: 18px;
+    padding-bottom: 18px;
+}
+
+.table100-body td {
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+
+/*==================================================================
+[ Fix header ]*/
+.table100 {
+    position: relative;
+    padding-top: 60px;
+}
+
+.table100-head {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.table100-body {
+    max-height: 585px;
+    overflow: auto;
+}
+
+
+/*==================================================================
+[ Ver3 ]*/
+
+.table100.ver3 {
+    background-color: #393939;
+}
+
+.table100.ver3 th {
+    font-size: 15px;
+    color: white;
+    line-height: 1.4;
+    text-transform: uppercase;
+    background-color: #393939;
+}
+
+.table100.ver3 td {
+    font-size: 15px;
+    color: #808080;
+    line-height: 1.4;
+    background-color: #222222;
+}
+
+
+/*---------------------------------------------*/
+
+.table100.ver3 {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.15);
+    -webkit-box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.15);
+    -o-box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.15);
+    -ms-box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.15);
+}
+
+
+

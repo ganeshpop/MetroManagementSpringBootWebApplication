@@ -6,14 +6,11 @@
 <head>
     <title>Recharge</title>
     <link rel="stylesheet" href='<c:url value="dist/css/menuStyle.css"/>'>
-</head>
-<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Metro Management System</title>
     <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,600" rel="stylesheet">
-    <link rel="stylesheet" href="dist/css/menuStyle.css">
     <script src="https://unpkg.com/animejs@3.0.1/lib/anime.min.js"></script>
     <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
 </head>
@@ -41,13 +38,6 @@
 
 <div class="is-boxed has-animations">
     <div class="body-wrap,site-header">
-        <%--        <header class="site-header">--%>
-        <%--                <div class="container,site-header-inner, brand header-brand, m-0">--%>
-        <%--                            <a href="#">--%>
-        <%--                                <img class="header-logo-image" src="dist/images/logo.svg" alt="Logo">--%>
-        <%--                            </a>--%>
-        <%--                </div>--%>
-        <%--        </header>--%>
 
         <main>
 
@@ -157,13 +147,3 @@
 </body>
 </html>
 
-
-<%--<form action="./topUpCard" method="post">--%>
-<%--    Amount : <input type="text" name="amount"><br><br>--%>
-<%--    <input type="submit" value="Recharge">--%>
-<%--</form>--%>
-
-<a href="menu">Go Back to Menu</a><br><br>
-<a href="./">Go Back to Home</a><br><br>
-</body>
-</html>
