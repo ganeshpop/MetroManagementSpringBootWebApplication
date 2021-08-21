@@ -4,6 +4,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
+
     <title>Recharge Status</title>
     <link rel="stylesheet" href='<c:url value="dist/css/menuOutput.css"/>'>
 </head>
