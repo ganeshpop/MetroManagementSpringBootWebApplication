@@ -59,11 +59,11 @@ public class MetroSessionController {
         }
             if (cardService.isACard(login.getCardId())) {
                 if (cardService.validatePassword(login.getCardId(), login.getPassword())) {
-                    modelAndView.addObject("cardId", login.getCardId());
+                    Card card = cardService.getCardDetails(login.getCardId());
                     modelAndView.addObject("message", "You Are Now Logged In");
-                    modelAndView.addObject("card", cardService.getCardDetails(login.getCardId()));
+                    modelAndView.addObject("card", card);
                     modelAndView.setViewName("metroMenu");
-                    setSession(cardService.getCardDetails(login.getCardId()));
+                    setSession(card);
                     return modelAndView;
                 } else return new ModelAndView("metroLoginOutput", "message", "Invalid Password, Try Again");
             } else return new ModelAndView("metroLoginOutput", "message", "Invalid Card");

@@ -60,7 +60,7 @@ public class MetroMenuController {
 
     @RequestMapping("menu")
     public ModelAndView menuController(@ModelAttribute("card") Card card, HttpSession session) {
-        return new ModelAndView("metroMenu", "card", session.getAttribute("card"));
+        return new ModelAndView("metroMenu", "card", cardService.getCardDetails(((Card) session.getAttribute("card")).getCardId()));
     }
 
     @RequestMapping("getCard")
@@ -92,7 +92,7 @@ public class MetroMenuController {
 
     @RequestMapping("topUpCard")
     public ModelAndView topUpController(@Valid @ModelAttribute("amount") Amount amount, BindingResult result, HttpSession session) {
-        ModelAndView modelAndView = new ModelAndView("cardRechargeOutput", "card", session.getAttribute("card"));
+        ModelAndView modelAndView = new ModelAndView("cardRechargeOutput");
         if (result.hasErrors()) {
             return new ModelAndView("cardRecharge", "command", new Amount());
         }
@@ -100,7 +100,8 @@ public class MetroMenuController {
         if (0 < intAmount && intAmount <= 1000) {
             if (cardService.rechargeCard(((Card) session.getAttribute("card")).getCardId(), intAmount)) {
                 setSession(cardService.getCardDetails(((Card) session.getAttribute("card")).getCardId()));
-                modelAndView.addObject("message", " Recharge Successful, Current Balance is :" + cardService.getBalance(((Card) session.getAttribute("card")).getCardId()));
+                modelAndView.addObject("message", " Card " + ((Card) session.getAttribute("card")).getCardId() + " Recharge Successful ");
+                modelAndView.addObject("card", cardService.getCardDetails(((Card) session.getAttribute("card")).getCardId()));
             } else modelAndView.addObject("message", "Recharge Failed, Try Again");
         } else modelAndView.addObject("message", "Invalid Range, Permitted Range [1 to 1000]");
         return modelAndView;

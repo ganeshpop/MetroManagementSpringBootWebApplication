@@ -1,7 +1,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags/form" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Metro Management System</title>
     <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,600" rel="stylesheet">
-    <link rel="stylesheet" href='<c:url value="dist/css/style.css"/>'>
+    <link rel="stylesheet" href='<c:url value="dist/css/loginStyle.css"/>'>
     <script src="https://unpkg.com/animejs@3.0.1/lib/anime.min.js"></script>
     <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
 </head>
@@ -35,8 +35,8 @@
             <div class="container">
                 <div class="hero-inner">
                     <div class="hero-copy">
-                        <h1 class="hero-title mt-0">Lets Get You Logged In.</h1>
-                        <p class="hero-paragraph">Enter your Details. </p>
+                        <h1 class="hero-title mt-0">Lets Get You Logged In</h1>
+                        <p class="hero-paragraph">Enter your details. </p>
 
                         <div class="hero-cta"><a class="button button-primary" href="./">Go Back</a>
                         </div>
@@ -45,20 +45,30 @@
                         <div class="pricing-table-inner is-revealing">
                             <div class="pricing-table-main">
                                 <p>Enter Login Details</p>
-
-
                                 <spring:form action="./verifyCard" method="post" modelAttribute="login">
                                     <ul class="pricing-table-features list-reset text-xs">
-                                        <li >
-                                            <span> Card ID : <spring:input path="cardId"/></span>
+                                        <li>
+                                            <span>  <label
+                                                    style="width: 106px; display: inline-block">Card ID : </label> <spring:input
+                                                    path="cardId"
+                                                    cssClass="text simpleTextField"
+                                                    maxlength="200"
+                                                    cssStyle="width:50%;"/></span>
                                         </li>
                                         <li>
-                                            <span> Password  : <spring:input type="password" path="password"/></span>
+                                            <span> <label
+                                                    style="width: 110px; display: inline-block"> Password  : </label><spring:input
+                                                    path="password"
+                                                    type="password"
+                                                    maxlength="200"
+                                                    cssStyle="width:50%;"/></span>
                                         </li>
-                                    </ul><spring:errors path="password" cssClass="error"/>
-                                        <input class="button button-primary button-shadow button-block" type="submit"
-                                               value="Login">
+                                        <spring:errors path="password" cssClass="error"/><br>
+                                <input class="button button-primary button-shadow button-block" type="submit"
+                                       value="Login">
                                 </spring:form>
+
+
                                 <div class="pricing-table-cta mb-8">
 
                                 </div>

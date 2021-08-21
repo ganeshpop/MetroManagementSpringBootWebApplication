@@ -412,9 +412,6 @@ h4, h5, h6, .h4, .h5, .h6 {
     }
 }
 
-.text-light h1, .text-light h2, .text-light h3, .text-light h4, .text-light h5, .text-light h6, .text-light .h1, .text-light .h2, .text-light .h3, .text-light .h4, .text-light .h5, .text-light .h6 {
-    color: !important
-}
 
 .text-sm {
     font-size: 18px;
@@ -1275,13 +1272,7 @@ button, input, select, textarea, label {
     background-image: url("../images/hero-back-illustration.svg")
 }
 
-.hero-figure::after {
-    top: -35.6%;
-    left: 99.6%;
-    width: 57.2%;
-    height: 87.88%;
-    background-image: url("../images/hero-top-illustration.svg")
-}
+
 
 .hero-figure-box {
     position: absolute;
@@ -1565,8 +1556,8 @@ button, input, select, textarea, label {
 .pricing-table {
     position: relative;
     padding: 12px;
-    width: 368px;
-    max-width: 368px;
+    width: 1068px;
+    max-width: 1068px;
     flex-grow: 1
 }
 
@@ -1665,16 +1656,16 @@ button, input, select, textarea, label {
     overflow: hidden
 }
 
-.cta-inner::before {
-    content: '';
-    position: absolute;
-    right: 98px;
-    top: -117px;
-    width: 160px;
-    height: 187px;
-    background-image: url("../images/cta-illustration.svg");
-    background-repeat: no-repeat
-}
+/*.cta-inner::before {*/
+/*    content: '';*/
+/*    position: absolute;*/
+/*    right: 98px;*/
+/*    top: -117px;*/
+/*    width: 160px;*/
+/*    height: 187px;*/
+/*    background-image: url("../images/cta-illustration.svg");*/
+/*    background-repeat: no-repeat*/
+/*}*/
 
 .cta-inner > * {
     position: relative

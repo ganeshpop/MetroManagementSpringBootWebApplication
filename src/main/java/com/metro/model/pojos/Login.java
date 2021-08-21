@@ -13,6 +13,6 @@ import javax.validation.constraints.NotBlank;
 @Setter
 public class Login {
     private int cardId;
-    @NotBlank(message = "Cannot Be Blank")
+    @NotBlank(message = "Password Cannot Be Blank")
     private String password;
 }
