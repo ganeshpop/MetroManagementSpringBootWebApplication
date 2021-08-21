@@ -39,13 +39,7 @@
 
 <div class="is-boxed has-animations">
     <div class="body-wrap,site-header">
-        <%--        <header class="site-header">--%>
-        <%--                <div class="container,site-header-inner, brand header-brand, m-0">--%>
-        <%--                            <a href="#">--%>
-        <%--                                <img class="header-logo-image" src="dist/images/logo.svg" alt="Logo">--%>
-        <%--                            </a>--%>
-        <%--                </div>--%>
-        <%--        </header>--%>
+
 
         <main>
 
@@ -55,7 +49,6 @@
                     <div class="pricing-inner section-inner">
                         <div class="pricing-header text-center">
                             <h2 class="section-title mt-0">${message}</h2>
-                            <%--                            <p class="section-paragraph mb-0" style="color: azure">${message}</p>--%>
                         </div>
                         <div class="pricing-tables-wrap">
                             <div class="pricing-table">
@@ -145,7 +138,3 @@
 </html>
 
 
-<%--<form action="./topUpCard" method="post">--%>
-<%--    Amount : <input type="text" name="amount"><br><br>--%>
-<%--    <input type="submit" value="Recharge">--%>
-<%--</form>--%>

@@ -1,3 +1,4 @@
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags/form" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -8,20 +9,19 @@
     <title>Transactions</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href='<c:url value="vendor/bootstrap/css/bootstrap.min.css"/>'>
     <link rel="stylesheet" href='<c:url value="vendor/animate/animate.css"/>'>
     <link rel="stylesheet" href='<c:url value="vendor/select2/select2.min.css"/>'>
     <link rel="stylesheet" href='<c:url value="vendor/perfect-scrollbar/perfect-scrollbar.css"/>'>
     <link rel="stylesheet" href='<c:url value="dist/css/transactionsStyle.css"/>'>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,600" rel="stylesheet">
     <script src="https://unpkg.com/animejs@3.0.1/lib/anime.min.js"></script>
     <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
 </head>
-<body>
+<body class="is-boxed has-animations">
 
 <nav class="navMenu" style="padding-top: 20px">
     <ul class="menuItems">
@@ -42,80 +42,86 @@
         <li class="menuLi" style="padding-inline: 20px"><a class="menuA" href='./' data-item='Log Out'>Log Out</a></li>
     </ul>
 </nav>
-<div class="transactions">
 
-    <c:if test="${not empty transactions}">
-    <div class="limiter">
-        <div class="container-table100">
-            <div class="wrap-table100">
-                <div class="table100 ver3 m-b-110">
-                    <div class="table100-head">
-                        <table>
-                            <thead>
-                            <tr class="row100 head">
-                                <th class="cell100 column1">Card ID</th>
-                                <th class="cell100 column2">Swipe In Time</th>
-                                <th class="cell100 column3">Source Station</th>
-                                <th class="cell100 column4">Destination Station</th>
-                                <th class="cell100 column5">Swipe Out Time</th>
-                                <th class="cell100 column6">Travel Fare
-                                </td>
-                                <th class="cell100 column7">Fine</th>
-                                <th class="cell100 column8">Total Fare</th>
-                                <th class="cell100 column9">Travel Duration</th>
-                            </tr>
-                            </thead>
-                        </table>
-                    </div>
+<div class="is-boxed has-animations">
+    <div class="body-wrap,site-header">
 
-                    <div class="table100-body js-pscroll">
-                        <table>
-                            <tbody>
-                            <c:forEach items="${transactions}" var="transaction">
-                                <tr>
-                                    <td>${transaction.cardId }</td>
-                                    <td>${transaction.swipeInTimeStamp}</td>
-                                    <td>${transaction.sourceStation.stationId}</td>
-                                    <td>${transaction.sourceStation.stationName}</td>
-                                    <td>${transaction.destinationStation.stationId}</td>
-                                    <td>${transaction.destinationStation.stationName}</td>
-                                    <td>${transaction.swipeOutTimeStamp}</td>
-                                    <td>${transaction.fare}</td>
-                                    <td>${transaction.fine}</td>
-                                    <td>${transaction.fare + transaction.fine}</td>
-                                    <td>${transaction.duration}</td>
-                                </tr>
-                            </c:forEach>
+        <main>
+            <div class="transactions">
+                <c:if test="${not empty transactions}">
+                <h4 style="text-align: center">Your Transactions </h4>
+                <div class="limiter">
+                    <div class="container-table100">
+                        <div class="wrap-table100">
+                            <div class="table100 ver3 m-b-110">
+                                <div class="table100-head">
+                                    <table>
+                                        <thead>
+                                        <tr class="row100 head">
+                                            <th class="cell100 column1">Card ID</th>
+                                            <th class="cell100 column2">Swipe In Time</th>
+                                            <th class="cell100 column3">Source Station</th>
+                                            <th class="cell100 column4">Destination Station</th>
+                                            <th class="cell100 column5">Swipe Out Time</th>
+                                            <th class="cell100 column6">Travel Fare</th>
+                                            <th class="cell100 column7">Fine</th>
+                                            <th class="cell100 column8">Total Fare</th>
+                                            <th class="cell100 column9">Travel Duration</th>
+                                        </tr>
+                                        </thead>
+                                    </table>
+                                </div>
 
-                            </tbody>
-                        </table>
+                                <div class="table100-body js-pscroll">
+                                    <table>
+                                        <tbody>
+                                        <c:forEach items="${transactions}" var="transaction">
+                                            <tr class="row100 body">
+                                                <td class="cell100 column1">${transaction.cardId }</td>
+                                                <td class="cell100 column2">${transaction.swipeInTimeStamp.toGMTString()}</td>
+                                                <td class="cell100 column3">
+                                                    [${transaction.sourceStation.stationId}] ${transaction.sourceStation.stationName}</td>
+                                                <td class="cell100 column4">
+                                                    [${transaction.destinationStation.stationId}] ${transaction.destinationStation.stationName}</td>
+                                                <td class="cell100 column5">${transaction.swipeOutTimeStamp.toGMTString()}</td>
+                                                <td class="cell100 column6">&#8377;${transaction.fare}/-</td>
+                                                <td class="cell100 column7">&#8377;${transaction.fine}/-</td>
+                                                <td class="cell100 column8">&#8377;${transaction.fare + transaction.fine}/-</td>
+                                                <td class="cell100 column9">${transaction.duration} min</td>
+                                            </tr>
+                                        </c:forEach>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        </c:if>
+                        <c:if test="${empty transactions}">
+                            <h3>No Transactions Found</h3>
+                        </c:if>
+
+
+                        <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+
+
+                        <script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+                        <script>
+                            $('.js-pscroll').each(function () {
+                                var ps = new PerfectScrollbar(this);
+
+                                $(window).on('resize', function () {
+                                    ps.update();
+                                })
+                            });
+                        </script>
+
                     </div>
                 </div>
-
-
             </div>
-            </c:if>
-            <c:if test="${empty transactions}">
-                <h3>No Transactions Found</h3>
-            </c:if>
-
-            <script src="<c:url value="vendor/jquery/jquery-3.2.1.min.js"/>"></script>
-            <script src="<c:url value="vendor/bootstrap/js/popper.js"/>"></script>
-            <script src="<c:url value="vendor/bootstrap/js/bootstrap.min.js"/>"></script>
-            <script src="<c:url value="vendor/select2/select2.min.js"/>"></script>
-            <script src="<c:url value="vendor/perfect-scrollbar/perfect-scrollbar.min.js"/>"></script>
-            <script>
-                $('.js-pscroll').each(function () {
-                    var ps = new PerfectScrollbar(this);
-
-                    $(window).on('resize', function () {
-                        ps.update();
-                    })
-                });
-            </script>
-
-        </div>
-
+        </main>
 
         <footer class="site-footer">
             <div class="container">
@@ -178,8 +184,11 @@
     </div>
     <script src="dist/js/main.min.js"></script>
 </div>
-
 </body>
+
+
+
+
 
 
 

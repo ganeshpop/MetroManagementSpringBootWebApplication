@@ -38,13 +38,7 @@
 
 <div class="is-boxed has-animations">
     <div class="body-wrap,site-header">
-        <%--        <header class="site-header">--%>
-        <%--                <div class="container,site-header-inner, brand header-brand, m-0">--%>
-        <%--                            <a href="#">--%>
-        <%--                                <img class="header-logo-image" src="dist/images/logo.svg" alt="Logo">--%>
-        <%--                            </a>--%>
-        <%--                </div>--%>
-        <%--        </header>--%>
+
 
         <main>
 
