@@ -60,6 +60,7 @@ public class MetroMenuController {
 
     @RequestMapping("menu")
     public ModelAndView menuController(@ModelAttribute("card") Card card, HttpSession session) {
+        setSession(cardService.getCardDetails(((Card) session.getAttribute("card")).getCardId()));
         return new ModelAndView("metroMenu", "card", cardService.getCardDetails(((Card) session.getAttribute("card")).getCardId()));
     }
 

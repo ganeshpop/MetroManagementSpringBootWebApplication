@@ -49,7 +49,7 @@
         <main>
             <div class="transactions">
                 <c:if test="${not empty transactions}">
-                <h4 style="text-align: center">Your Transactions </h4>
+                <h2 style="text-align: center">Your Transactions </h2>
                 <div class="limiter">
                     <div class="container-table100">
                         <div class="wrap-table100">
@@ -82,7 +82,9 @@
                                                 <td class="cell100 column3">
                                                     [${transaction.sourceStation.stationId}] ${transaction.sourceStation.stationName}</td>
                                                 <td class="cell100 column4">
+                                                    <c:if test="${not empty transaction.destinationStation}">
                                                     [${transaction.destinationStation.stationId}] ${transaction.destinationStation.stationName}</td>
+                                                    </c:if>
                                                 <td class="cell100 column5">${transaction.swipeOutTimeStamp.toGMTString()}</td>
                                                 <td class="cell100 column6">&#8377;${transaction.fare}/-</td>
                                                 <td class="cell100 column7">&#8377;${transaction.fine}/-</td>
@@ -100,7 +102,7 @@
                         </div>
                         </c:if>
                         <c:if test="${empty transactions}">
-                            <h3>No Transactions Found</h3>
+                            <h2 style="text-align: center">No Transactions Found</h2>
                         </c:if>
 
 

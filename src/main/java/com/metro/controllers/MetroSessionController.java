@@ -81,8 +81,8 @@ public class MetroSessionController {
             int intCardId = cardService.addCard(new Card("Basic", signUp.getBalance()));
             if (intCardId > 0) {
                 if (cardService.setPassword(intCardId, signUp.getPasswordOne())) {
-                    modelAndView.addObject("message", "Welcome, "+ signUp.getUserName()+" Your Metro Card Created Successfully, Your Card ID is " + intCardId + " Now You Can Use Metro Services");
-//                  modelAndView.addObject("card", cardService.getCardDetails(intCardId));
+                    modelAndView.addObject("message", "Congratulations, "+ signUp.getUserName()+" you have been assigned a metro card, Happy Travelling :)");
+                    modelAndView.addObject("card", cardService.getCardDetails(intCardId));
                     setSession(cardService.getCardDetails(intCardId));
                     modelAndView.setViewName("metroMenu");
                 }

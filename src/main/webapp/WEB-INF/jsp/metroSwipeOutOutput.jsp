@@ -43,18 +43,22 @@
 
         <main>
 
-
             <section class="pricing section">
                 <div class="container-sm">
                     <div class="pricing-inner section-inner">
                         <div class="pricing-header text-center">
-                            <h2 class="section-title mt-0">Your Card ${card.cardId}</h2>
+                            <h2 class="section-title mt-0">Swipe Out Status</h2>
                         </div>
+
                         <div class="pricing-tables-wrap">
                             <div class="pricing-table">
                                 <div class="pricing-table-inner is-revealing">
                                     <div class="pricing-table-main">
+
                                         <div class="pricing-table-header pb-24">
+                                            <h4 class="section-title mt-0">${message}</h4>
+                                            <c:if test="${not empty transaction}">
+                                            <h5 class="section-title mt-0">Trip Details</h5>
                                             <div class="pricing-table-price"><span
                                                     class="pricing-table-price-currency h2">₹</span><span
                                                     class="pricing-table-price-amount h1">${card.balance}</span><span
@@ -99,9 +103,10 @@
                                             </li>
                                         </ul>
                                     </div>
+                                    </c:if>
                                     <div class="pricing-table-cta mb-8">
-                                        <a class="button button-primary button-shadow button-block" href="rechargeCard">Recharge
-                                            Now</a>
+                                        <a class="button button-primary button-shadow button-block" href="menu">Go
+                                            Home</a>
                                     </div>
                                 </div>
                             </div>

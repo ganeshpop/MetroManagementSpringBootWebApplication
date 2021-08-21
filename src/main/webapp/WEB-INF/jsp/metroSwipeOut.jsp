@@ -4,7 +4,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <title>Swipe Out</title>
+    <title>Swipe In</title>
     <link rel="stylesheet" href='<c:url value="dist/css/swipeCardStyle.css"/>'>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -47,7 +47,7 @@
                 <div class="container-sm">
                     <div class="pricing-inner section-inner">
                         <div class="pricing-header text-center">
-                            <h2 class="section-title mt-0">Select A Station To Swipe Out</h2>
+                            <h2 class="section-title mt-0">Select A Station To Swipe In</h2>
 
                         </div>
                         <div class="pricing-tables-wrap">
@@ -65,12 +65,14 @@
 
                                         </label>
                                         <div>
+
+
                                             <ul class="pricing-table-features list-reset text-xs">
                                                 <spring:form action="./cardSwipeOut" method="post">
                                                 <c:forEach items="${stations}" var="station">
                                                     <li>
                                                         <label class="rad-label">
-                                                            <input type="radio" class="rad-input" name="swipeInStation"
+                                                            <input type="radio" class="rad-input" name="swipeOutStation"
                                                                    value="${station.stationId}">
                                                             <div class="rad-design"></div>
                                                             <div class="rad-text">
@@ -84,7 +86,7 @@
                                         <div class="pricing-table-cta mb-8">
                                             <input class="button button-primary button-shadow button-block"
                                                    type="submit"
-                                                   value="Swipe Out">
+                                                   value="Swipe In">
                                         </div>
                                         </spring:form>
                                     </div>
@@ -92,7 +94,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
             </section>
         </main>
 
@@ -159,5 +160,10 @@
 </div>
 </body>
 </html>
+
+
+
+
+
 
 
