@@ -1,6 +1,5 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags/form" %>
 
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
@@ -33,7 +32,7 @@
             Out</a></li>
         <li class="menuLi" style="padding-inline: 20px"><a class="menuA" href='passwordChange'
                                                            data-item='Change Password'>Change Password</a></li>
-        <li class="menuLi" style="padding-inline: 20px"><a class="menuA" href='./' data-item='Log Out'>Log Out</a></li>
+        <li class="menuLi" style="padding-inline: 20px"><a class="menuA" href='logout' data-item='Log Out'>Log Out</a></li>
     </ul>
 </nav>
 
@@ -56,50 +55,50 @@
                                     <div class="pricing-table-main">
 
                                         <div class="pricing-table-header pb-24">
-                                            <h4 class="section-title mt-0">${message}</h4>
+                                            <h3 class="section-title mt-0" style="text-align: center">${message}</h3>
                                             <c:if test="${not empty transaction}">
-                                            <h5 class="section-title mt-0">Trip Details</h5>
+                                            <h4 class="section-title mt-0" style="text-align: center">Trip Details</h4>
                                             <div class="pricing-table-price"><span
-                                                    class="pricing-table-price-currency h2">₹</span><span
+                                                    class="pricing-table-price-currency h2">&#8377;</span><span
                                                     class="pricing-table-price-amount h1">${card.balance}</span><span
                                                     class="text-xs">&nbsp;(current balance)</span></div>
                                         </div>
                                         <ul class="pricing-table-features list-reset text-xs">
                                             <li>
-                                                <span>Card ID: <data
-                                                        style="color: white; margin: 0; padding: 0;"> ${transaction.cardId }</data></span>
+                                                <span>Card ID: <p
+                                                        style="color: white; margin: 0; padding: 0;"> ${transaction.cardId }</p></span>
                                             </li>
                                             <li>
-                                                <span>Swipe In Time :<data
-                                                        style="color: white; margin: 0; padding: 0;"> ${transaction.swipeInTimeStamp.toGMTString()}</data> </span>
+                                                <span>Swipe In Time :<p
+                                                        style="color: white; margin: 0; padding: 0;"> ${transaction.swipeInTimeStamp.toGMTString()}</p> </span>
                                             </li>
                                             <li>
-                                                <span>Source Station :<data
-                                                        style="color: white; margin: 0; padding: 0;"> [${transaction.sourceStation.stationId}]&nbsp;${transaction.sourceStation.stationName}</data> </span>
+                                                <span>Source Station :<p
+                                                        style="color: white; margin: 0; padding: 0;"> [${transaction.sourceStation.stationId}]&nbsp;${transaction.sourceStation.stationName}</p> </span>
                                             </li>
                                             <li>
-                                                <span>Destination Station :<data
-                                                        style="color: white; margin: 0; padding: 0;"> [${transaction.destinationStation.stationId}]&nbsp;${transaction.destinationStation.stationName}</data> </span>
+                                                <span>Destination Station :<p
+                                                        style="color: white; margin: 0; padding: 0;"> [${transaction.destinationStation.stationId}]&nbsp;${transaction.destinationStation.stationName}</p> </span>
                                             </li>
                                             <li>
-                                                <span>Swipe Out Time :<data
-                                                        style="color: white; margin: 0; padding: 0;"> ${transaction.swipeOutTimeStamp.toGMTString()}</data> </span>
+                                                <span>Swipe Out Time :<p
+                                                        style="color: white; margin: 0; padding: 0;"> ${transaction.swipeOutTimeStamp.toGMTString()}</p> </span>
                                             </li>
                                             <li>
-                                                <span>Travel Fare :<data
-                                                        style="color: white; margin: 0; padding: 0;"> &#8377;${transaction.fare}/-</data> </span>
+                                                <span>Travel Fare :<p
+                                                        style="color: white; margin: 0; padding: 0;"> &#8377;${transaction.fare - transaction.fine}/-</p> </span>
                                             </li>
                                             <li>
-                                                <span>Fine :<data
-                                                        style="color: white; margin: 0; padding: 0;"> &#8377;${transaction.fine}/-</data> </span>
+                                                <span>Fine :<p
+                                                        style="color: white; margin: 0; padding: 0;"> &#8377;${transaction.fine}/-</p> </span>
                                             </li>
                                             <li>
-                                                <span>Total Fare :<data
-                                                        style="color: white; margin: 0; padding: 0;"> &#8377;${transaction.fare + transaction.fine}/-</data> </span>
+                                                <span>Total Fare :<p
+                                                        style="color: white; margin: 0; padding: 0;"> &#8377;${transaction.fare}/-</p> </span>
                                             </li>
                                             <li>
-                                                <span>Travel Duration :<data
-                                                        style="color: white; margin: 0; padding: 0;"> ${transaction.duration}/-</data> </span>
+                                                <span>Travel Duration :<p
+                                                        style="color: white; margin: 0; padding: 0;"> ${transaction.duration} min</p> </span>
                                             </li>
                                         </ul>
                                     </div>

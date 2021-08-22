@@ -23,8 +23,7 @@ public class StationDao implements StationDaoInterface{
 
     @Override
     public Collection<Station> getAllStations() {
-        List<Station> stations = jdbcTemplate.query("SELECT * FROM stations;", new StationRowMapper());
-        return stations;
+        return jdbcTemplate.query("SELECT * FROM stations;", new StationRowMapper());
     }
 
     @Override

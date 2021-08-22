@@ -32,7 +32,7 @@
             Out</a></li>
         <li class="menuLi" style="padding-inline: 20px"><a class="menuA" href='passwordChange'
                                                            data-item='Change Password'>Change Password</a></li>
-        <li class="menuLi" style="padding-inline: 20px"><a class="menuA" href='./' data-item='Log Out'>Log Out</a></li>
+        <li class="menuLi" style="padding-inline: 20px"><a class="menuA" href='logout' data-item='Log Out'>Log Out</a></li>
     </ul>
 </nav>
 
@@ -47,7 +47,7 @@
                     <div class="pricing-inner section-inner">
                         <div class="pricing-header text-center">
                             <h2 class="section-title mt-0">Lets Change Your Password</h2>
-                            <%--                            <p class="section-paragraph mb-0" style="color: azure">${message}</p>--%>
+
                         </div>
                         <div class="pricing-tables-wrap">
                             <div class="pricing-table">

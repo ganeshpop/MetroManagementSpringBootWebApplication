@@ -69,33 +69,6 @@
     }
 }
 
-.field-grouped {
-
-    > .control {
-
-        &:not(:last-child) {
-            margin-bottom: 8px;
-        }
-    }
-}
-
 @include media( '>medium' ) {
 
-    .field-grouped {
-        display: flex;
-
-        > .control {
-            flex-shrink: 0;
-
-            &.control-expanded {
-                flex-grow: 1;
-                flex-shrink: 1;
-            }
-
-            &:not(:last-child) {
-                margin-bottom: 0;
-                margin-right: 8px;
-            }
-        }
-    }
 }

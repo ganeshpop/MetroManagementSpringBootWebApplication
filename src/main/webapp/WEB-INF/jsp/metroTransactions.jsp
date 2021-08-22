@@ -1,6 +1,4 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags/form" %>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-         pageEncoding="ISO-8859-1" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
@@ -39,7 +37,7 @@
             Out</a></li>
         <li class="menuLi" style="padding-inline: 20px"><a class="menuA" href='passwordChange'
                                                            data-item='Change Password'>Change Password</a></li>
-        <li class="menuLi" style="padding-inline: 20px"><a class="menuA" href='./' data-item='Log Out'>Log Out</a></li>
+        <li class="menuLi" style="padding-inline: 20px"><a class="menuA" href='logout' data-item='Log Out'>Log Out</a></li>
     </ul>
 </nav>
 
@@ -84,11 +82,11 @@
                                                 <td class="cell100 column4">
                                                     <c:if test="${not empty transaction.destinationStation}">
                                                     [${transaction.destinationStation.stationId}] ${transaction.destinationStation.stationName}</td>
-                                                    </c:if>
+                                                </c:if>
                                                 <td class="cell100 column5">${transaction.swipeOutTimeStamp.toGMTString()}</td>
-                                                <td class="cell100 column6">&#8377;${transaction.fare}/-</td>
+                                                <td class="cell100 column6">&#8377;${transaction.fare -transaction.fine}/-</td>
                                                 <td class="cell100 column7">&#8377;${transaction.fine}/-</td>
-                                                <td class="cell100 column8">&#8377;${transaction.fare + transaction.fine}/-</td>
+                                                <td class="cell100 column8">&#8377;${transaction.fare}/-</td>
                                                 <td class="cell100 column9">${transaction.duration} min</td>
                                             </tr>
                                         </c:forEach>
@@ -113,7 +111,6 @@
                         <script>
                             $('.js-pscroll').each(function () {
                                 var ps = new PerfectScrollbar(this);
-
                                 $(window).on('resize', function () {
                                     ps.update();
                                 })
@@ -187,18 +184,4 @@
     <script src="dist/js/main.min.js"></script>
 </div>
 </body>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

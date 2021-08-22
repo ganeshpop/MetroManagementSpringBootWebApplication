@@ -1,6 +1,6 @@
+<%--suppress HtmlUnknownTag --%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags/form" %>
 
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
@@ -32,7 +32,7 @@
             Out</a></li>
         <li class="menuLi" style="padding-inline: 20px"><a class="menuA" href='passwordChange'
                                                            data-item='Change Password'>Change Password</a></li>
-        <li class="menuLi" style="padding-inline: 20px"><a class="menuA" href='./' data-item='Log Out'>Log Out</a></li>
+        <li class="menuLi" style="padding-inline: 20px"><a class="menuA" href='logout' data-item='Log Out'>Log Out</a></li>
     </ul>
 </nav>
 
@@ -56,7 +56,7 @@
                                     <div class="pricing-table-main">
                                         <div class="pricing-table-header pb-24">
                                             <div class="pricing-table-price"><span
-                                                    class="pricing-table-price-currency h2">₹</span><span
+                                                    class="pricing-table-price-currency h2">&#8377;</span><span
                                                     class="pricing-table-price-amount h1">${card.balance}</span><span
                                                     class="text-xs">&nbsp;(current balance)</span></div>
                                         </div>
@@ -94,6 +94,7 @@
                             </div>
                         </div>
                     </div>
+                </div>
             </section>
         </main>
 

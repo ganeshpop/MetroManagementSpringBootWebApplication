@@ -45,7 +45,6 @@ abbr[title] {
     border-bottom: none;
     text-decoration: underline;
     -webkit-text-decoration: underline dotted;
-    text-decoration: underline dotted
 }
 
 b, strong {
@@ -333,42 +332,42 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 h1, .h1 {
     font-size: 38px;
     line-height: 48px;
-    letter-spacing: 0px
+    letter-spacing: 0
 }
 
 @media (min-width: 641px) {
     h1, .h1 {
         font-size: 44px;
         line-height: 54px;
-        letter-spacing: 0px
+        letter-spacing: 0
     }
 }
 
 h2, .h2 {
     font-size: 32px;
     line-height: 42px;
-    letter-spacing: 0px
+    letter-spacing: 0
 }
 
 @media (min-width: 641px) {
     h2, .h2 {
         font-size: 38px;
         line-height: 48px;
-        letter-spacing: 0px
+        letter-spacing: 0
     }
 }
 
 h3, .h3, blockquote {
     font-size: 24px;
     line-height: 34px;
-    letter-spacing: 0px
+    letter-spacing: 0
 }
 
 @media (min-width: 641px) {
     h3, .h3, blockquote {
         font-size: 32px;
         line-height: 42px;
-        letter-spacing: 0px
+        letter-spacing: 0
     }
 }
 
@@ -382,7 +381,7 @@ h4, h5, h6, .h4, .h5, .h6 {
     h4, h5, h6, .h4, .h5, .h6 {
         font-size: 24px;
         line-height: 34px;
-        letter-spacing: 0px
+        letter-spacing: 0
     }
 }
 
@@ -390,19 +389,19 @@ h4, h5, h6, .h4, .h5, .h6 {
     .h1-mobile {
         font-size: 38px;
         line-height: 48px;
-        letter-spacing: 0px
+        letter-spacing: 0
     }
 
     .h2-mobile {
         font-size: 32px;
         line-height: 42px;
-        letter-spacing: 0px
+        letter-spacing: 0
     }
 
     .h3-mobile {
         font-size: 24px;
         line-height: 34px;
-        letter-spacing: 0px
+        letter-spacing: 0
     }
 
     .h4-mobile, .h5-mobile, .h6-mobile {
@@ -495,7 +494,6 @@ pre {
     overflow: auto;
     padding: 24px;
     margin-top: 24px;
-    margin-bottom: 24px
 }
 
 code, kbd, tt, var {
@@ -570,7 +568,7 @@ button, input, select, textarea, label {
     clip: auto !important;
     display: block;
     font-size: 14px;
-    letter-spacing: 0px;
+    letter-spacing: 0;
     font-weight: 600;
     line-height: 16px;
     text-decoration: none;
@@ -705,16 +703,8 @@ button, input, select, textarea, label {
     margin-top: 24px
 }
 
-.mr-24 {
-    margin-right: 24px
-}
-
 .mb-24 {
     margin-bottom: 24px
-}
-
-.ml-24 {
-    margin-left: 24px
 }
 
 .m-32 {
@@ -759,22 +749,6 @@ button, input, select, textarea, label {
 
 .m-48 {
     margin: 48px
-}
-
-.mt-48 {
-    margin-top: 48px
-}
-
-.mr-48 {
-    margin-right: 48px
-}
-
-.mb-48 {
-    margin-bottom: 48px
-}
-
-.ml-48 {
-    margin-left: 48px
 }
 
 .m-56 {
@@ -885,16 +859,8 @@ button, input, select, textarea, label {
     padding-top: 24px
 }
 
-.pr-24 {
-    padding-right: 24px
-}
-
 .pb-24 {
     padding-bottom: 24px
-}
-
-.pl-24 {
-    padding-left: 24px
 }
 
 .p-32 {
@@ -935,26 +901,6 @@ button, input, select, textarea, label {
 
 .pl-40 {
     padding-left: 40px
-}
-
-.p-48 {
-    padding: 48px
-}
-
-.pt-48 {
-    padding-top: 48px
-}
-
-.pr-48 {
-    padding-right: 48px
-}
-
-.pb-48 {
-    padding-bottom: 48px
-}
-
-.pl-48 {
-    padding-left: 48px
 }
 
 .p-56 {
@@ -1091,9 +1037,6 @@ button, input, select, textarea, label {
 }
 
 @media (min-width: 641px) {
-    .field-grouped {
-        display: flex
-    }
 
     .field-grouped > .control {
         flex-shrink: 0
@@ -1113,7 +1056,7 @@ button, input, select, textarea, label {
 .button {
     display: inline-flex;
     font-size: 14px;
-    letter-spacing: 0px;
+    letter-spacing: 0;
     font-weight: 600;
     line-height: 16px;
     text-decoration: none !important;
@@ -1194,7 +1137,6 @@ button, input, select, textarea, label {
 
 .header-links a:not(.button) {
     font-size: 16px;
-    line-height: 24px;
     letter-spacing: -0.1px;
     font-weight: 600;
     color: #8A94A7;
@@ -1716,7 +1658,6 @@ button, input, select, textarea, label {
     margin: 0 auto;
     box-shadow: 0 24px 48px rgba(21, 24, 29, 0.24);
     mix-blend-mode: multiply;
-    mix-blend-mode: normal
 }
 
 main {
@@ -1739,7 +1680,7 @@ main {
 .site-footer {
     font-size: 14px;
     line-height: 22px;
-    letter-spacing: 0px
+    letter-spacing: 0
 }
 
 .site-footer a {

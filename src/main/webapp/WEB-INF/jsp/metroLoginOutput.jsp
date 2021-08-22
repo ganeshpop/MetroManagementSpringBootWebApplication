@@ -39,7 +39,10 @@
 
                                         </div>
                                         <div class="pricing-table-cta mb-8">
-                                            <a class="button button-primary button-shadow button-block" href="./">Go Back</a>
+                                            <a class="button button-primary button-shadow button-block" href="login">Go Back</a>
+                                        </div>
+                                        <div class="pricing-table-cta mb-8">
+                                            <a class="button button-primary button-shadow button-block" href="./">Go Home</a>
                                         </div>
                                     </div>
                                 </div>

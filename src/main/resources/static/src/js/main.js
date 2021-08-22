@@ -1,3 +1,5 @@
+// noinspection JSUnresolvedFunction
+
 (function () {
   const win = window
   const doc = document.documentElement

@@ -30,6 +30,7 @@ import javax.validation.Valid;
 @Controller
 @SessionAttributes("card")
 public class MetroMenuController {
+    private boolean isStateChanged = false;
     CardServiceInterface cardService;
     TransactionServiceInterface transactionService;
     StationServiceInterface stationService;
@@ -38,6 +39,7 @@ public class MetroMenuController {
     public Card setSession(Card card) {
         return card;
     }
+
 
     @Autowired
     @Qualifier("stationService")
@@ -58,15 +60,20 @@ public class MetroMenuController {
     }
 
 
+
     @RequestMapping("menu")
     public ModelAndView menuController(@ModelAttribute("card") Card card, HttpSession session) {
-        setSession(cardService.getCardDetails(((Card) session.getAttribute("card")).getCardId()));
-        return new ModelAndView("metroMenu", "card", cardService.getCardDetails(((Card) session.getAttribute("card")).getCardId()));
+        if(!isStateChanged) return new ModelAndView("metroMenu", "card", session.getAttribute("card"));
+        else {
+            isStateChanged = false;
+            return new ModelAndView("metroMenu", "card",  cardService.getCardDetails(((Card) session.getAttribute("card")).getCardId()));
+        }
     }
 
     @RequestMapping("getCard")
     public ModelAndView cardController(HttpSession session) {
-        return new ModelAndView("cardDetails", "card", cardService.getCardDetails(((Card) session.getAttribute("card")).getCardId()));
+        setSession(cardService.getCardDetails(((Card) session.getAttribute("card")).getCardId()));
+        return new ModelAndView("cardDetails", "card", session.getAttribute("card"));
     }
 
     @RequestMapping("getTransactions")
@@ -78,7 +85,9 @@ public class MetroMenuController {
 
     @RequestMapping("rechargeCard")
     public ModelAndView rechargeController(HttpSession session) {
-        ModelAndView modelAndView = new ModelAndView("cardRecharge", "card", cardService.getCardDetails(((Card) session.getAttribute("card")).getCardId()));
+        setSession(cardService.getCardDetails(((Card) session.getAttribute("card")).getCardId()));
+        isStateChanged = true;
+        ModelAndView modelAndView = new ModelAndView("cardRecharge", "card", session.getAttribute("card"));
         return modelAndView.addObject("amount", new Amount());
 
     }
@@ -101,6 +110,7 @@ public class MetroMenuController {
         if (0 < intAmount && intAmount <= 1000) {
             if (cardService.rechargeCard(((Card) session.getAttribute("card")).getCardId(), intAmount)) {
                 setSession(cardService.getCardDetails(((Card) session.getAttribute("card")).getCardId()));
+                isStateChanged = true;
                 modelAndView.addObject("message", " Card " + ((Card) session.getAttribute("card")).getCardId() + " Recharge Successful ");
                 modelAndView.addObject("card", cardService.getCardDetails(((Card) session.getAttribute("card")).getCardId()));
             } else modelAndView.addObject("message", "Recharge Failed, Try Again");
@@ -135,7 +145,7 @@ public class MetroMenuController {
 
     @RequestMapping("swipeOut")
     public ModelAndView swipeOutController(HttpSession session) {
-        ModelAndView modelAndView = new ModelAndView("metroSwipeOut", "card", session.getAttribute("card"));
+        ModelAndView modelAndView = new ModelAndView("metroSwipeOut");
         modelAndView.addObject("card", cardService.getCardDetails(((Card) session.getAttribute("card")).getCardId()));
         modelAndView.addObject("stations", stationService.getAllStations());
         return modelAndView;
@@ -159,13 +169,15 @@ public class MetroMenuController {
 
     @RequestMapping("cardSwipeOut")
     public ModelAndView cardSwipeOutController(@RequestParam("swipeOutStation") String swipeOutStation, HttpSession session) {
-        ModelAndView modelAndView = new ModelAndView("metroSwipeOutOutput", "card", session.getAttribute("card"));
+        ModelAndView modelAndView = new ModelAndView("metroSwipeOutOutput");
         try {
             Transaction transaction = transactionService.swipeOut(((Card) session.getAttribute("card")).getCardId(), Integer.parseInt(swipeOutStation));
             if (transaction != null) {
                 modelAndView.addObject("message", " Swipe Out Successful  ");
                 modelAndView.addObject("transaction", transaction);
                 setSession(cardService.getCardDetails(((Card) session.getAttribute("card")).getCardId()));
+                modelAndView.addObject("card", cardService.getCardDetails(((Card) session.getAttribute("card")).getCardId()));
+                isStateChanged = true;
             } else modelAndView.addObject("message", "Swipe Out Failed, Try Again");
             return modelAndView;
         } catch (InvalidStationException | InvalidSwipeOutException e) {

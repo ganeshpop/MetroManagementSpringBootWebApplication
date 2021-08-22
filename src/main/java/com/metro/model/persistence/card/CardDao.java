@@ -48,9 +48,9 @@ public class CardDao implements CardDaoInterface {
     }
 
     @Override
-    public boolean chargeCard(int cardId, int amount) {
+    public void chargeCard(int cardId, int amount) {
         int affectedRows = jdbcTemplate.update("UPDATE cards SET balance = balance - ? WHERE card_id = ?;", amount, cardId);
-        return (affectedRows > 0);
+//        return (affectedRows > 0);
     }
 
     @Override

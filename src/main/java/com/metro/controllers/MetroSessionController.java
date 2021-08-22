@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 
@@ -48,6 +49,12 @@ public class MetroSessionController {
     @RequestMapping("signup")
     public ModelAndView signupController() {
         return new ModelAndView("metroSignUp", "signup", new SignUp());
+    }
+
+    @RequestMapping("logout")
+    public ModelAndView logoutController(HttpSession session) {
+        session.invalidate();
+        return new ModelAndView("metroLogin", "login", new Login());
     }
 
 

@@ -30,10 +30,9 @@ public class TransactionDao implements TransactionDaoInterface{
     }
 
     @Override
-    public boolean setDestinationStation(int stationId, int transactionId) {
-        int affectedRows = jdbcTemplate.update("UPDATE transactions SET destination_station_id = ?, swipe_out_time_stamp = (SYSDATE() + INTERVAL 15 MINUTE) WHERE transaction_id = ?;", stationId, transactionId);
-        //int affectedRows = jdbcTemplate.update("UPDATE transactions SET destination_station_id = ?, swipe_out_time_stamp = (SYSDATE() + INTERVAL 200 MINUTE) WHERE transaction_id = ?;", stationId, transactionId);
-        return (affectedRows > 0);
+    public void setDestinationStation(int stationId, int transactionId) {
+        //jdbcTemplate.update("UPDATE transactions SET destination_station_id = ?, swipe_out_time_stamp = (SYSDATE() + INTERVAL 15 MINUTE) WHERE transaction_id = ?;", stationId, transactionId);
+        jdbcTemplate.update("UPDATE transactions SET destination_station_id = ?, swipe_out_time_stamp = (SYSDATE() + INTERVAL 200 MINUTE) WHERE transaction_id = ?;", stationId, transactionId);
     }
 
     @Override
@@ -53,9 +52,8 @@ public class TransactionDao implements TransactionDaoInterface{
         return -1;
     }
     @Override
-    public boolean createTransaction(Transaction transaction) {
-        int affectedRows = jdbcTemplate.update("INSERT INTO transactions(card_id, source_station_id, swipe_in_time_stamp) VALUE (?, ?, SYSDATE());", transaction.getCardId(), transaction.getSourceStation().getStationId());
-        return (affectedRows > 0);
+    public void createTransaction(Transaction transaction) {
+        jdbcTemplate.update("INSERT INTO transactions(card_id, source_station_id, swipe_in_time_stamp) VALUE (?, ?, SYSDATE());", transaction.getCardId(), transaction.getSourceStation().getStationId());
     }
 
     @Override

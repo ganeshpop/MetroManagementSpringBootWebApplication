@@ -8,9 +8,9 @@ public interface TransactionDaoInterface {
 
     Collection<Transaction> getAllTransactions(int cardId);
     Collection<Transaction> getAllFines();
-    boolean setDestinationStation(int stationId, int transactionId);
+    void setDestinationStation(int stationId, int transactionId);
     Transaction getLastTransaction(int cardId);
     int getTransactionDuration(int transactionId);
-    boolean createTransaction(Transaction transaction);
+    void createTransaction(Transaction transaction);
     boolean completeTransaction(Transaction transaction);
 }
