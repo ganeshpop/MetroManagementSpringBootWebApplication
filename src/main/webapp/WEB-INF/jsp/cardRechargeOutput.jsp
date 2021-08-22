@@ -6,7 +6,7 @@
 <head>
 
     <title>Recharge Status</title>
-    <link rel="stylesheet" href='<c:url value="dist/css/menuOutput.css"/>'>
+    <link rel="stylesheet" href='<c:url value="dist/css/rechargeOutput.css"/>'>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -77,22 +77,19 @@
             <div class="container">
                 <div class="site-footer-inner">
                     <div class="brand footer-brand">
-                        <a href="#">
+                        <a href="menu">
                             <img class="header-logo-image" src="dist/images/logo.svg" alt="Logo">
                         </a>
                     </div>
                     <ul class="footer-links list-reset">
                         <li>
-                            <a href="#">Contact</a>
+                            <a href = "mailto: ganeshgo1999@gmail.com">Contact</a>
                         </li>
                         <li>
-                            <a href="#">About us</a>
+                            <a href="https://www.linkedin.com/in/s-sai-ganesh-koundinya-gollapudi-25285118a/">About Me</a>
                         </li>
                         <li>
-                            <a href="#">FAQ's</a>
-                        </li>
-                        <li>
-                            <a href="#">Support</a>
+                            <a href="support">Support</a>
                         </li>
                     </ul>
                     <ul class="footer-social-links list-reset">

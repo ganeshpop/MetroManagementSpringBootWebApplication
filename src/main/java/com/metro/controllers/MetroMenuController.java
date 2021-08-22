@@ -75,6 +75,14 @@ public class MetroMenuController {
         setSession(cardService.getCardDetails(((Card) session.getAttribute("card")).getCardId()));
         return new ModelAndView("cardDetails", "card", session.getAttribute("card"));
     }
+    @RequestMapping("support")
+    public ModelAndView supportController() {
+        return new ModelAndView("metroSupport");
+    }
+    @RequestMapping("sessionSupport")
+    public ModelAndView sessionSupportController() {
+        return new ModelAndView("metroUserSupport");
+    }
 
     @RequestMapping("getTransactions")
     public ModelAndView transactionController(HttpSession session) {

@@ -61,7 +61,7 @@
                                             <li>
                                                 <label
                                                         style="width: 250px; display: inline-block">Old Password :</label> <spring:input
-                                                        type="password" path="oldPassword" maxlength="300"
+                                                        type="password" path="oldPassword" maxlength="200"
                                                         cssStyle="width:50%"/>
                                             </li>
                                             <spring:errors path="oldPassword" cssClass="error"/>
@@ -98,22 +98,19 @@
             <div class="container">
                 <div class="site-footer-inner">
                     <div class="brand footer-brand">
-                        <a href="#">
+                        <a href="menu">
                             <img class="header-logo-image" src="dist/images/logo.svg" alt="Logo">
                         </a>
                     </div>
                     <ul class="footer-links list-reset">
                         <li>
-                            <a href="#">Contact</a>
+                            <a href = "mailto: ganeshgo1999@gmail.com">Contact</a>
                         </li>
                         <li>
-                            <a href="#">About us</a>
+                            <a href="https://www.linkedin.com/in/s-sai-ganesh-koundinya-gollapudi-25285118a/">About Me</a>
                         </li>
                         <li>
-                            <a href="#">FAQ's</a>
-                        </li>
-                        <li>
-                            <a href="#">Support</a>
+                            <a href="support">Support</a>
                         </li>
                     </ul>
                     <ul class="footer-social-links list-reset">

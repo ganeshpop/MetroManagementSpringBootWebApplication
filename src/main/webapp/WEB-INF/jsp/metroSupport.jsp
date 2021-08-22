@@ -1,14 +1,14 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags/form" %>
 
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <title>Menu</title>
+    <title>Support</title>
     <link rel="stylesheet" href='<c:url value="dist/css/menuStyle.css"/>'>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Metro Management System</title>
     <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,600" rel="stylesheet">
     <script src="https://unpkg.com/animejs@3.0.1/lib/anime.min.js"></script>
     <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
@@ -35,6 +35,7 @@
     </ul>
 </nav>
 
+
 <div class="is-boxed has-animations">
     <div class="body-wrap,site-header">
 
@@ -46,33 +47,28 @@
                 <div class="container-sm">
                     <div class="pricing-inner section-inner">
                         <div class="pricing-header text-center">
-                            <h2 class="section-title mt-0">Welcome To City Metro User ${card.cardId}</h2>
-                            <p class="section-paragraph mb-0" style="color: azure">${message}</p>
+                            <h2 class="section-title mt-0">Contact Me</h2>
                         </div>
                         <div class="pricing-tables-wrap">
                             <div class="pricing-table">
                                 <div class="pricing-table-inner is-revealing">
                                     <div class="pricing-table-main">
                                         <div class="pricing-table-header pb-24">
-                                            <div class="pricing-table-price"><span
-                                                    class="pricing-table-price-currency h2">&#8377;</span><span
-                                                    class="pricing-table-price-amount h1">${card.balance}</span><span
-                                                    class="text-xs">&nbsp;(current balance)</span></div>
+
                                         </div>
                                         <ul class="pricing-table-features list-reset text-xs">
                                             <li>
-                                                <span>Card Type :<p
-                                                        style="color: white; margin: 0; padding: 0;"> ${card.cardType}</p></span>
+                                                <span>Phone :<p
+                                                        style="color: white; margin: 0; padding: 0;"> 8143317777</p></span>
                                             </li>
                                             <li>
-                                                <span>Active Since :<p
-                                                        style="color: white; margin: 0; padding: 0;"> ${card.activeSince.toGMTString()}</p> </span>
+                                                <span>Email :<p
+                                                        style="color: white; margin: 0; padding: 0;"> ganeshgo1999@gmail.com</p> </span>
                                             </li>
                                         </ul>
                                     </div>
                                     <div class="pricing-table-cta mb-8">
-                                        <a class="button button-primary button-shadow button-block" href="rechargeCard">Recharge
-                                            Now</a>
+                                        <a class="button button-primary button-shadow button-block" href="menu">Go Back</a>
                                     </div>
                                 </div>
                             </div>
@@ -92,14 +88,13 @@
                     </div>
                     <ul class="footer-links list-reset">
                         <li>
-                            <a href = "mailto: ganeshgo1999@gmail.com">Contact</a>
+                            <a href="mailto: ganeshgo1999@gmail.com">Contact</a>
                         </li>
                         <li>
-                            <a href="https://www.linkedin.com/in/s-sai-ganesh-koundinya-gollapudi-25285118a/">About Me</a>
+                            <a href="https://www.linkedin.com/in/s-sai-ganesh-koundinya-gollapudi-25285118a/">About
+                                Me</a>
                         </li>
-                        <li>
-                            <a href="support">Support</a>
-                        </li>
+
                     </ul>
                     <ul class="footer-social-links list-reset">
                         <li>

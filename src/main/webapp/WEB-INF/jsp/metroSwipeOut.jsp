@@ -4,7 +4,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <title>Swipe In</title>
+    <title>Swipe Out</title>
     <link rel="stylesheet" href='<c:url value="dist/css/swipeCardStyle.css"/>'>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -47,7 +47,7 @@
                 <div class="container-sm">
                     <div class="pricing-inner section-inner">
                         <div class="pricing-header text-center">
-                            <h2 class="section-title mt-0">Select A Station To Swipe In</h2>
+                            <h2 class="section-title mt-0">Select A Station To Swipe Out</h2>
 
                         </div>
                         <div class="pricing-tables-wrap">
@@ -86,7 +86,7 @@
                                         <div class="pricing-table-cta mb-8">
                                             <input class="button button-primary button-shadow button-block"
                                                    type="submit"
-                                                   value="Swipe In">
+                                                   value="Swipe Out">
                                         </div>
                                         </spring:form>
                                     </div>
@@ -102,22 +102,19 @@
             <div class="container">
                 <div class="site-footer-inner">
                     <div class="brand footer-brand">
-                        <a href="#">
+                        <a href="menu">
                             <img class="header-logo-image" src="dist/images/logo.svg" alt="Logo">
                         </a>
                     </div>
                     <ul class="footer-links list-reset">
                         <li>
-                            <a href="#">Contact</a>
+                            <a href = "mailto: ganeshgo1999@gmail.com">Contact</a>
                         </li>
                         <li>
-                            <a href="#">About us</a>
+                            <a href="https://www.linkedin.com/in/s-sai-ganesh-koundinya-gollapudi-25285118a/">About Me</a>
                         </li>
                         <li>
-                            <a href="#">FAQ's</a>
-                        </li>
-                        <li>
-                            <a href="#">Support</a>
+                            <a href="support">Support</a>
                         </li>
                     </ul>
                     <ul class="footer-social-links list-reset">

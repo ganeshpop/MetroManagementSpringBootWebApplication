@@ -4,10 +4,10 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
+    <title>Login</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Metro Management System</title>
     <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,600" rel="stylesheet">
     <link rel="stylesheet" href='<c:url value="dist/css/loginStyle.css"/>'>
     <script src="https://unpkg.com/animejs@3.0.1/lib/anime.min.js"></script>
@@ -85,22 +85,19 @@
         <div class="container">
             <div class="site-footer-inner">
                 <div class="brand footer-brand">
-                    <a href="#">
+                    <a href="menu">
                         <img class="header-logo-image" src="dist/images/logo.svg" alt="Logo">
                     </a>
                 </div>
                 <ul class="footer-links list-reset">
                     <li>
-                        <a href="#">Contact</a>
+                        <a href = "mailto: ganeshgo1999@gmail.com">Contact</a>
                     </li>
                     <li>
-                        <a href="#">About us</a>
+                        <a href="https://www.linkedin.com/in/s-sai-ganesh-koundinya-gollapudi-25285118a/">About Me</a>
                     </li>
                     <li>
-                        <a href="#">FAQ's</a>
-                    </li>
-                    <li>
-                        <a href="#">Support</a>
+                        <a href="sessionSupport">Support</a>
                     </li>
                 </ul>
                 <ul class="footer-social-links list-reset">

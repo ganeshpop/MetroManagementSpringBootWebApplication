@@ -31,8 +31,8 @@ public class TransactionDao implements TransactionDaoInterface{
 
     @Override
     public void setDestinationStation(int stationId, int transactionId) {
-        //jdbcTemplate.update("UPDATE transactions SET destination_station_id = ?, swipe_out_time_stamp = (SYSDATE() + INTERVAL 15 MINUTE) WHERE transaction_id = ?;", stationId, transactionId);
-        jdbcTemplate.update("UPDATE transactions SET destination_station_id = ?, swipe_out_time_stamp = (SYSDATE() + INTERVAL 200 MINUTE) WHERE transaction_id = ?;", stationId, transactionId);
+        jdbcTemplate.update("UPDATE transactions SET destination_station_id = ?, swipe_out_time_stamp = (SYSDATE() + INTERVAL 15 MINUTE) WHERE transaction_id = ?;", stationId, transactionId);
+        //jdbcTemplate.update("UPDATE transactions SET destination_station_id = ?, swipe_out_time_stamp = (SYSDATE() + INTERVAL 200 MINUTE) WHERE transaction_id = ?;", stationId, transactionId);
     }
 
     @Override

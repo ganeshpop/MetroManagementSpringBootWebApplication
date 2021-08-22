@@ -37,9 +37,11 @@
                                     <div class="pricing-table-main">
                                         <div class="pricing-table-header pb-24">
 
-                                    </div>
-                                    <div class="pricing-table-cta mb-8">
-                                        <a class="button button-primary button-shadow button-block" href="./">Go Back</a>
+                                        </div>
+                                        <div class="pricing-table-cta mb-8">
+                                            <a class="button button-primary button-shadow button-block" href="./">Go
+                                                Back</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -47,28 +49,26 @@
                     </div>
                 </div>
             </section>
+
         </main>
 
         <footer class="site-footer">
             <div class="container">
                 <div class="site-footer-inner">
                     <div class="brand footer-brand">
-                        <a href="#">
+                        <a href="menu">
                             <img class="header-logo-image" src="dist/images/logo.svg" alt="Logo">
                         </a>
                     </div>
                     <ul class="footer-links list-reset">
                         <li>
-                            <a href="#">Contact</a>
+                            <a href = "mailto: ganeshgo1999@gmail.com">Contact</a>
                         </li>
                         <li>
-                            <a href="#">About us</a>
+                            <a href="https://www.linkedin.com/in/s-sai-ganesh-koundinya-gollapudi-25285118a/">About Me</a>
                         </li>
                         <li>
-                            <a href="#">FAQ's</a>
-                        </li>
-                        <li>
-                            <a href="#">Support</a>
+                            <a href="sessionSupport">Support</a>
                         </li>
                     </ul>
                     <ul class="footer-social-links list-reset">

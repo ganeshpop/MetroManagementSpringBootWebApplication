@@ -4,12 +4,11 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <title>Menu</title>
+    <title>Card Details</title>
     <link rel="stylesheet" href='<c:url value="dist/css/menuStyle.css"/>'>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Metro Management System</title>
     <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,600" rel="stylesheet">
     <script src="https://unpkg.com/animejs@3.0.1/lib/anime.min.js"></script>
     <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
@@ -35,6 +34,7 @@
         <li class="menuLi" style="padding-inline: 20px"><a class="menuA" href='logout' data-item='Log Out'>Log Out</a></li>
     </ul>
 </nav>
+
 
 <div class="is-boxed has-animations">
     <div class="body-wrap,site-header">
@@ -86,22 +86,19 @@
             <div class="container">
                 <div class="site-footer-inner">
                     <div class="brand footer-brand">
-                        <a href="#">
+                        <a href="menu">
                             <img class="header-logo-image" src="dist/images/logo.svg" alt="Logo">
                         </a>
                     </div>
                     <ul class="footer-links list-reset">
                         <li>
-                            <a href="#">Contact</a>
+                            <a href = "mailto: ganeshgo1999@gmail.com">Contact</a>
                         </li>
                         <li>
-                            <a href="#">About us</a>
+                            <a href="https://www.linkedin.com/in/s-sai-ganesh-koundinya-gollapudi-25285118a/">About Me</a>
                         </li>
                         <li>
-                            <a href="#">FAQ's</a>
-                        </li>
-                        <li>
-                            <a href="#">Support</a>
+                            <a href="support">Support</a>
                         </li>
                     </ul>
                     <ul class="footer-social-links list-reset">
