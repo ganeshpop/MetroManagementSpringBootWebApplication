@@ -1553,7 +1553,7 @@ button, input, select, textarea, label {
     background-size: 75%;
     bottom: 18.8%;
     -webkit-transform: translateX(-50%);
-    transform: translateY(54%);
+    transform: translateY(65%);
     background-image: url("../images/pricing-illustration.svg")
 }
 .pricing-table-header, .pricing-table-features-title, .pricing-table-features li {

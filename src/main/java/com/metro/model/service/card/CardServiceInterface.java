@@ -4,7 +4,6 @@ import com.metro.model.pojos.Card;
 
 
 public interface CardServiceInterface {
-        int getBalance(int cardId);
     int addCard(Card card);
     Card getCardDetails(int cardId);
     boolean isACard(int cardId);

@@ -55,7 +55,7 @@
                                     <div class="pricing-table-main">
 
                                         <div class="pricing-table-header pb-24">
-                                            <h3 class="section-title mt-0" style="text-align: center">${message}</h3>
+                                            <h4 class="section-title mt-0" style="text-align: center">${message}</h4>
                                             <c:if test="${not empty transaction}">
                                             <h4 class="section-title mt-0" style="text-align: center">Trip Details</h4>
                                             <div class="pricing-table-price"><span

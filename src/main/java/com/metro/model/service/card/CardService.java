@@ -20,11 +20,6 @@ public class CardService implements  CardServiceInterface{
     }
 
     @Override
-    public int getBalance(int cardId) {
-        if(cardDao.getCardDetails(cardId) == null) return -1;
-        return cardDao.getCardDetails(cardId).getBalance();
-    }
-    @Override
     public int addCard(Card card) {
         if(cardDao.addCard(card)){
             return cardDao.getNewCardId();

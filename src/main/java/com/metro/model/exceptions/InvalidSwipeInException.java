@@ -6,7 +6,5 @@ public class InvalidSwipeInException extends Exception {
         super("You have not Swiped Out from Previous Trip!");
     }
 
-    public InvalidSwipeInException(String message) {
-        super(message);
-    }
+
 }

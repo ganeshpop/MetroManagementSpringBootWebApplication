@@ -47,29 +47,38 @@
                                 <spring:form action="./createCard" method="post" modelAttribute="signup">
                                     <ul class="pricing-table-features list-reset text-xs">
                                         <li>
-                                            <span>  <label  style="width: 186px; display: inline-block">Name : </label> <spring:input path="userName"
-                                                                        cssClass="text simpleTextField"
-                                                                        maxlength="200"
-                                                                        cssStyle="width:50%;"/></span>
+                                            <span>  <label
+                                                    style="width: 186px; display: inline-block">Name : </label> <spring:input
+                                                    path="userName"
+                                                    cssClass="text simpleTextField"
+                                                    maxlength="200"
+                                                    cssStyle="width:50%;"/></span>
                                         </li>
-                                            <spring:errors path="userName" cssClass="error"/>
+                                        <spring:errors path="userName" cssClass="error"/>
                                         <li>
-                                            <span> <label  style="width: 190px; display: inline-block">Initial Balance : </label><spring:input path="balance"
-                                                                                  maxlength="200"
-                                                                                  cssStyle="width:50%;"/></span>
+                                            <span> <label
+                                                    style="width: 190px; display: inline-block">Initial Balance : </label><spring:input
+                                                    path="balance"
+                                                    maxlength="200"
+                                                    value="100"
+                                                    cssStyle="width:50%;"/></span>
                                         </li>
-                                            <spring:errors path="balance" cssClass="error"/>
+                                        <spring:errors path="balance" cssClass="error"/>
                                         <li>
-                                            <span><label  style="width: 186px; display: inline-block"> Password : </label> <spring:input type="password" path="passwordOne"
-                                                                            maxlength="200"
-                                                                            cssStyle="width:50%;"/></span>
+                                            <span><label
+                                                    style="width: 186px; display: inline-block"> Password : </label> <spring:input
+                                                    type="password" path="passwordOne"
+                                                    maxlength="200"
+                                                    cssStyle="width:50%;"/></span>
                                         </li>
-                                            <spring:errors path="passwordOne" cssClass="error"/>
+                                        <spring:errors path="passwordOne" cssClass="error"/>
                                         <li>
-                                            <span><label  style="width: 190px; display: inline-block">Conform Password : </label><spring:input type="password" path="passwordTwo"
-                                                                                   maxlength="200" cssStyle="width:50%;"/></span>
+                                            <span><label
+                                                    style="width: 190px; display: inline-block">Conform Password : </label><spring:input
+                                                    type="password" path="passwordTwo"
+                                                    maxlength="200" cssStyle="width:50%;"/></span>
                                         </li>
-                                            <spring:errors path="passwordTwo" cssClass="error"/>
+                                        <spring:errors path="passwordTwo" cssClass="error"/>
 
                                     </ul>
                                     <input class="button button-primary button-shadow button-block" type="submit"
@@ -89,13 +98,13 @@
         <div class="container">
             <div class="site-footer-inner">
                 <div class="brand footer-brand">
-                    <a href="menu">
+                    <a href="./">
                         <img class="header-logo-image" src="dist/images/logo.svg" alt="Logo">
                     </a>
                 </div>
                 <ul class="footer-links list-reset">
                     <li>
-                        <a href = "mailto: ganeshgo1999@gmail.com">Contact</a>
+                        <a href="mailto: ganeshgo1999@gmail.com">Contact</a>
                     </li>
                     <li>
                         <a href="https://www.linkedin.com/in/s-sai-ganesh-koundinya-gollapudi-25285118a/">About Me</a>

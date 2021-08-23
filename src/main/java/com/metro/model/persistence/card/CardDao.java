@@ -49,7 +49,7 @@ public class CardDao implements CardDaoInterface {
 
     @Override
     public void chargeCard(int cardId, int amount) {
-        int affectedRows = jdbcTemplate.update("UPDATE cards SET balance = balance - ? WHERE card_id = ?;", amount, cardId);
+        jdbcTemplate.update("UPDATE cards SET balance = balance - ? WHERE card_id = ?;", amount, cardId);
 //        return (affectedRows > 0);
     }
 

@@ -85,7 +85,7 @@
         <div class="container">
             <div class="site-footer-inner">
                 <div class="brand footer-brand">
-                    <a href="menu">
+                    <a href="./">
                         <img class="header-logo-image" src="dist/images/logo.svg" alt="Logo">
                     </a>
                 </div>

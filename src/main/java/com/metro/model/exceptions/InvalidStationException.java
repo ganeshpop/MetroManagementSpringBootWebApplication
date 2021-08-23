@@ -6,7 +6,5 @@ public class InvalidStationException extends Exception {
         super("You Have Selected an Invalid Station, Please Try Again");
     }
 
-    public InvalidStationException(String message) {
-        super(message);
-    }
+
 }
