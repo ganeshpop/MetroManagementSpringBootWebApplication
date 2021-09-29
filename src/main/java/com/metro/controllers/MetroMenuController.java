@@ -7,6 +7,8 @@ import com.metro.model.exceptions.InvalidSwipeOutException;
 import com.metro.model.pojos.*;
 import com.metro.model.service.card.CardService;
 import com.metro.model.service.card.CardServiceInterface;
+import com.metro.model.service.logger.TransactionLogProducer;
+import com.metro.model.service.logger.UserLogProducer;
 import com.metro.model.service.station.StationService;
 import com.metro.model.service.station.StationServiceInterface;
 import com.metro.model.service.transaction.TransactionService;
@@ -30,6 +32,13 @@ public class MetroMenuController {
     CardServiceInterface cardService;
     TransactionServiceInterface transactionService;
     StationServiceInterface stationService;
+    TransactionLogProducer transactionLogProducer;
+
+    @Autowired
+    public void setTransactionLogProducer(TransactionLogProducer transactionLogProducer) {
+        this.transactionLogProducer = transactionLogProducer;
+    }
+
 
     @ModelAttribute("card")
     public Card setSession(Card card) {
@@ -118,7 +127,11 @@ public class MetroMenuController {
                 isStateChanged = true;
                 modelAndView.addObject("message", " Card " + ((Card) session.getAttribute("card")).getCardId() + " Recharge Successful ");
                 modelAndView.addObject("card", cardService.getCardDetails(((Card) session.getAttribute("card")).getCardId()));
-            } else modelAndView.addObject("message", "Recharge Failed, Try Again");
+                transactionLogProducer.sendMessage("Successful Recharge Of Amount " + amount.getAmount() + " To Card - " + ((Card) session.getAttribute("card")).getCardId());
+            } else {
+                modelAndView.addObject("message", "Recharge Failed, Try Again");
+                transactionLogProducer.sendMessage("Failed Recharge Of Amount " + amount.getAmount() + " To Card - " + ((Card) session.getAttribute("card")).getCardId());
+            }
         } else modelAndView.addObject("message", "Invalid Range, Permitted Range [1 to 1000]");
         return modelAndView;
     }
@@ -137,10 +150,12 @@ public class MetroMenuController {
     public ModelAndView cardSwipeInController(@Valid @ModelAttribute("selectedStation") SelectedStation swipeInStation, HttpSession session) {
         ModelAndView modelAndView = new ModelAndView("metroSwipeOutput", "card", session.getAttribute("card"));
         try {
-            if(swipeInStation.getSelectedStationId().equals("Swipe In")) throw new InvalidStationException();
+            if (swipeInStation.getSelectedStationId().equals("Swipe In")) throw new InvalidStationException();
             String sourceStation = transactionService.swipeIn(((Card) session.getAttribute("card")).getCardId(), Integer.parseInt(swipeInStation.getSelectedStationId()));
-            if (sourceStation != null)
+            if (sourceStation != null) {
                 modelAndView.addObject("message", " Swipe In Successful At Station " + sourceStation);
+                transactionLogProducer.sendMessage("Successful Swipe In Attempt At Station " + swipeInStation.getSelectedStationId() + "By Card - " + ((Card) session.getAttribute("card")).getCardId());
+            }
             else modelAndView.addObject("message", "Swipe In Failed, Try Again");
             return modelAndView;
         } catch (InsufficientBalanceException | InvalidStationException | InvalidSwipeInException e) {
@@ -179,13 +194,14 @@ public class MetroMenuController {
     public ModelAndView cardSwipeOutController(@Valid @ModelAttribute("selectedStation") SelectedStation swipeOutStation, HttpSession session) {
         ModelAndView modelAndView = new ModelAndView("metroSwipeOutOutput");
         try {
-            if(swipeOutStation.getSelectedStationId().equals("Swipe Out")) throw new InvalidStationException();
+            if (swipeOutStation.getSelectedStationId().equals("Swipe Out")) throw new InvalidStationException();
             Transaction transaction = transactionService.swipeOut(((Card) session.getAttribute("card")).getCardId(), Integer.parseInt(swipeOutStation.getSelectedStationId()));
             if (transaction != null) {
                 modelAndView.addObject("message", " Swipe Out Successful  ");
                 modelAndView.addObject("transaction", transaction);
                 setSession(cardService.getCardDetails(((Card) session.getAttribute("card")).getCardId()));
                 modelAndView.addObject("card", cardService.getCardDetails(((Card) session.getAttribute("card")).getCardId()));
+                transactionLogProducer.sendMessage("Successful Swipe Out Attempt At Station " + swipeOutStation.getSelectedStationId() + "By Card - " + ((Card) session.getAttribute("card")).getCardId());
                 isStateChanged = true;
             } else {
                 modelAndView.setViewName("metroSwipeOutput");

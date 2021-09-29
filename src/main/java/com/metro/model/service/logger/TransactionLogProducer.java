@@ -8,10 +8,10 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserLogProducer {
+public class TransactionLogProducer {
 
     private static final Logger logger = LoggerFactory.getLogger(KafkaProperties.Producer.class);
-    private static final String TOPIC = "user-log";
+    private static final String TOPIC = "transaction-log";
     private KafkaTemplate<String, String> kafkaTemplate;
 
     @Autowired
@@ -20,7 +20,7 @@ public class UserLogProducer {
     }
 
     public void sendMessage(String message) {
-        logger.info(String.format("Session Log -> %s", message));
-        this.kafkaTemplate.send(TOPIC, "Session Log -> " +  message);
+        logger.info(String.format("Transaction Log -> %s", message));
+        this.kafkaTemplate.send(TOPIC, "Transaction Log ->" +  message);
     }
 }

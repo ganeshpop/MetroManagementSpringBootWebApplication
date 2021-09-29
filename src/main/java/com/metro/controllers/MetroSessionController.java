@@ -82,11 +82,11 @@ public class MetroSessionController {
                 userLogProducer.sendMessage("Successful Login Attempt From Card ID - " + login.getCardId());
                 return modelAndView;
             } else {
-                userLogProducer.sendMessage("Login Attempt From Invalid Card ID - " + login.getCardId());
+                userLogProducer.sendMessage("Failed Login Attempt From Card ID - " + login.getCardId());
                 return new ModelAndView("metroLoginOutput", "message", "Invalid Password, Try Again");
             }
         } else {
-            userLogProducer.sendMessage("Failed Login Attempt From Card ID - " + login.getCardId());
+            userLogProducer.sendMessage("Login Attempt From Invalid Card ID - " + login.getCardId());
             return new ModelAndView("metroLoginOutput", "message", "Invalid Card");
         }
 
