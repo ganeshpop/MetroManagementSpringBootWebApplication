@@ -4,6 +4,7 @@ import com.metro.model.pojos.Card;
 import com.metro.model.pojos.Login;
 import com.metro.model.pojos.SignUp;
 import com.metro.model.service.card.CardService;
+import com.metro.model.service.logger.UserLogProducer;
 import com.metro.model.service.transaction.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -23,6 +24,13 @@ import javax.validation.Valid;
 public class MetroSessionController {
     CardService cardService;
     TransactionService transactionService;
+    UserLogProducer userLogProducer;
+
+    @Autowired
+    public void setUserLogProducer(UserLogProducer userLogProducer) {
+        this.userLogProducer = userLogProducer;
+    }
+
 
     @ModelAttribute("card")
     public Card setSession(Card card) {
@@ -64,16 +72,23 @@ public class MetroSessionController {
         if (result.hasErrors()) {
             return new ModelAndView("metroLogin", "command", new Login());
         }
-            if (cardService.isACard(login.getCardId())) {
-                if (cardService.validatePassword(login.getCardId(), login.getPassword())) {
-                    Card card = cardService.getCardDetails(login.getCardId());
-                    modelAndView.addObject("message", "You Are Now Logged In");
-                    modelAndView.addObject("card", card);
-                    modelAndView.setViewName("metroMenu");
-                    setSession(card);
-                    return modelAndView;
-                } else return new ModelAndView("metroLoginOutput", "message", "Invalid Password, Try Again");
-            } else return new ModelAndView("metroLoginOutput", "message", "Invalid Card");
+        if (cardService.isACard(login.getCardId())) {
+            if (cardService.validatePassword(login.getCardId(), login.getPassword())) {
+                Card card = cardService.getCardDetails(login.getCardId());
+                modelAndView.addObject("message", "You Are Now Logged In");
+                modelAndView.addObject("card", card);
+                modelAndView.setViewName("metroMenu");
+                setSession(card);
+                userLogProducer.sendMessage("Successful Login Attempt From Card ID - " + login.getCardId());
+                return modelAndView;
+            } else {
+                userLogProducer.sendMessage("Login Attempt From Invalid Card ID - " + login.getCardId());
+                return new ModelAndView("metroLoginOutput", "message", "Invalid Password, Try Again");
+            }
+        } else {
+            userLogProducer.sendMessage("Failed Login Attempt From Card ID - " + login.getCardId());
+            return new ModelAndView("metroLoginOutput", "message", "Invalid Card");
+        }
 
     }
 
@@ -88,14 +103,21 @@ public class MetroSessionController {
             int intCardId = cardService.addCard(new Card("Basic", signUp.getBalance()));
             if (intCardId > 0) {
                 if (cardService.setPassword(intCardId, signUp.getPasswordOne())) {
-                    modelAndView.addObject("message", "Congratulations, "+ signUp.getUserName()+" you have been assigned a metro card, Please remember your Card ID for future.");
+                    modelAndView.addObject("message", "Congratulations, " + signUp.getUserName() + " you have been assigned a metro card, Please remember your Card ID for future.");
                     modelAndView.addObject("card", cardService.getCardDetails(intCardId));
                     setSession(cardService.getCardDetails(intCardId));
                     modelAndView.setViewName("metroMenu");
+                    userLogProducer.sendMessage("Successful SignUp Attempt, Created Card ID - " + intCardId);
                 }
                 return modelAndView;
-            } else return new ModelAndView("createCardOutput", "message", "Card Creation Failed");
-        } else return new ModelAndView("createCardOutput", "message", "Passwords Didnt Match, Try Again");
+            } else {
+                userLogProducer.sendMessage("Failed SignUp Attempt");
+                return new ModelAndView("createCardOutput", "message", "Card Creation Failed");
+            }
+        } else {
+            userLogProducer.sendMessage("Failed SignUp Attempt");
+            return new ModelAndView("createCardOutput", "message", "Passwords Didnt Match, Try Again");
+        }
     }
 
 
