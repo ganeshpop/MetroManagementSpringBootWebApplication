@@ -50,7 +50,6 @@ public class TransactionService implements TransactionServiceInterface {
 
     @Override
     public String swipeIn(int cardId, int sourceStationId) throws InsufficientBalanceException, InvalidStationException, InvalidSwipeInException {
-        System.out.println("SID" + sourceStationId);
         if(stationDao.isAStation(sourceStationId)) {
             if(cardDao.getCardDetails(cardId).getBalance() >= 20) {
                 Transaction lastTransaction =  transactionDao.getLastTransaction(cardId);
@@ -65,7 +64,6 @@ public class TransactionService implements TransactionServiceInterface {
 
     @Override
     public Transaction swipeOut(int cardId, int destinationStationId) throws InvalidSwipeOutException, InvalidStationException {
-        System.out.println("SID" + destinationStationId);
         if(stationDao.isAStation(destinationStationId)){
             Transaction lastTransaction =  transactionDao.getLastTransaction(cardId);
             if (lastTransaction != null && lastTransaction.getSourceStation() != null && lastTransaction.getDestinationStation() == null) {

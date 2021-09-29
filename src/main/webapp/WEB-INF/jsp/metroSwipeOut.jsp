@@ -68,7 +68,7 @@
 
 
                                             <ul class="pricing-table-features list-reset text-xs">
-                                                <spring:form action="./cardSwipeOut" method="post" modelAttribute="station">
+                                                <spring:form action="./cardSwipeOut" method="post" >
                                                 <c:forEach items="${stations}" var="station">
                                                     <li>
                                                         <label class="rad-label">
@@ -84,8 +84,8 @@
                                             </ul>
                                         </div>
                                         <div class="pricing-table-cta mb-8">
-                                            <spring:input class="button button-primary button-shadow button-block"
-                                                          type="submit" path="selectedStationId"
+                                            <input class="button button-primary button-shadow button-block"
+                                                          type="submit"
                                                           value="Swipe Out"/>
                                         </div>
                                         </spring:form>
