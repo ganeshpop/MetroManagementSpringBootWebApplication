@@ -68,12 +68,12 @@
 
 
                                             <ul class="pricing-table-features list-reset text-xs">
-                                                <spring:form action="./cardSwipeIn" method="post">
+                                                <spring:form action="./cardSwipeIn" method="post" modelAttribute="station">
                                                 <c:forEach items="${stations}" var="station">
                                                     <li>
                                                         <label class="rad-label">
                                                             <input type="radio" class="rad-input" name="swipeInStation"
-                                                                   value="${station.stationId}">
+                                                                   value=${station.stationId}>
                                                             <div class="rad-design"></div>
                                                             <div class="rad-text">
                                                                 [${station.stationId}] ${station.stationName}</div>
@@ -84,9 +84,9 @@
                                             </ul>
                                         </div>
                                         <div class="pricing-table-cta mb-8">
-                                            <input class="button button-primary button-shadow button-block"
-                                                   type="submit"
-                                                   value="Swipe In">
+                                            <spring:input class="button button-primary button-shadow button-block"
+                                                   type="submit" path="selectedStationId"
+                                                   value="Swipe In"/>
                                         </div>
                                         </spring:form>
                                     </div>

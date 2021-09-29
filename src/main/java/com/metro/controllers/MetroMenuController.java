@@ -4,10 +4,7 @@ import com.metro.model.exceptions.InsufficientBalanceException;
 import com.metro.model.exceptions.InvalidStationException;
 import com.metro.model.exceptions.InvalidSwipeInException;
 import com.metro.model.exceptions.InvalidSwipeOutException;
-import com.metro.model.pojos.Amount;
-import com.metro.model.pojos.Card;
-import com.metro.model.pojos.Password;
-import com.metro.model.pojos.Transaction;
+import com.metro.model.pojos.*;
 import com.metro.model.service.card.CardService;
 import com.metro.model.service.card.CardServiceInterface;
 import com.metro.model.service.station.StationService;
@@ -20,7 +17,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -60,13 +56,12 @@ public class MetroMenuController {
     }
 
 
-
     @RequestMapping("menu")
     public ModelAndView menuController(@ModelAttribute("card") Card card, HttpSession session) {
-        if(!isStateChanged) return new ModelAndView("metroMenu", "card", session.getAttribute("card"));
+        if (!isStateChanged) return new ModelAndView("metroMenu", "card", session.getAttribute("card"));
         else {
             isStateChanged = false;
-            return new ModelAndView("metroMenu", "card",  cardService.getCardDetails(((Card) session.getAttribute("card")).getCardId()));
+            return new ModelAndView("metroMenu", "card", cardService.getCardDetails(((Card) session.getAttribute("card")).getCardId()));
         }
     }
 
@@ -75,10 +70,12 @@ public class MetroMenuController {
         setSession(cardService.getCardDetails(((Card) session.getAttribute("card")).getCardId()));
         return new ModelAndView("cardDetails", "card", session.getAttribute("card"));
     }
+
     @RequestMapping("support")
     public ModelAndView supportController() {
         return new ModelAndView("metroSupport");
     }
+
     @RequestMapping("sessionSupport")
     public ModelAndView sessionSupportController() {
         return new ModelAndView("metroUserSupport");
@@ -130,16 +127,18 @@ public class MetroMenuController {
     public ModelAndView swipeInController(HttpSession session) {
         ModelAndView modelAndView = new ModelAndView("metroSwipeIn", "card", session.getAttribute("card"));
         modelAndView.addObject("card", cardService.getCardDetails(((Card) session.getAttribute("card")).getCardId()));
+        modelAndView.addObject("station", new SelectedStation());
         modelAndView.addObject("stations", stationService.getAllStations());
         return modelAndView;
     }
 
 
     @RequestMapping("cardSwipeIn")
-    public ModelAndView cardSwipeInController(@RequestParam("swipeInStation") int swipeInStation, HttpSession session) {
-        ModelAndView modelAndView = new ModelAndView("metroSwipeInOutput", "card", session.getAttribute("card"));
+    public ModelAndView cardSwipeInController(@Valid @ModelAttribute("selectedStation") SelectedStation swipeInStation, HttpSession session) {
+        ModelAndView modelAndView = new ModelAndView("metroSwipeOutput", "card", session.getAttribute("card"));
         try {
-            String sourceStation = transactionService.swipeIn(((Card) session.getAttribute("card")).getCardId(), swipeInStation);
+            if(swipeInStation.getSelectedStationId().equals("Swipe In")) throw new InvalidStationException();
+            String sourceStation = transactionService.swipeIn(((Card) session.getAttribute("card")).getCardId(), Integer.parseInt(swipeInStation.getSelectedStationId()));
             if (sourceStation != null)
                 modelAndView.addObject("message", " Swipe In Successful At Station " + sourceStation);
             else modelAndView.addObject("message", "Swipe In Failed, Try Again");
@@ -155,6 +154,7 @@ public class MetroMenuController {
     public ModelAndView swipeOutController(HttpSession session) {
         ModelAndView modelAndView = new ModelAndView("metroSwipeOut");
         modelAndView.addObject("card", cardService.getCardDetails(((Card) session.getAttribute("card")).getCardId()));
+        modelAndView.addObject("station", new SelectedStation());
         modelAndView.addObject("stations", stationService.getAllStations());
         return modelAndView;
     }
@@ -176,19 +176,24 @@ public class MetroMenuController {
 
 
     @RequestMapping("cardSwipeOut")
-    public ModelAndView cardSwipeOutController(@RequestParam("swipeOutStation") String swipeOutStation, HttpSession session) {
+    public ModelAndView cardSwipeOutController(@Valid @ModelAttribute("selectedStation") SelectedStation swipeOutStation, HttpSession session) {
         ModelAndView modelAndView = new ModelAndView("metroSwipeOutOutput");
         try {
-            Transaction transaction = transactionService.swipeOut(((Card) session.getAttribute("card")).getCardId(), Integer.parseInt(swipeOutStation));
+            if(swipeOutStation.getSelectedStationId().equals("Swipe Out")) throw new InvalidStationException();
+            Transaction transaction = transactionService.swipeOut(((Card) session.getAttribute("card")).getCardId(), Integer.parseInt(swipeOutStation.getSelectedStationId()));
             if (transaction != null) {
                 modelAndView.addObject("message", " Swipe Out Successful  ");
                 modelAndView.addObject("transaction", transaction);
                 setSession(cardService.getCardDetails(((Card) session.getAttribute("card")).getCardId()));
                 modelAndView.addObject("card", cardService.getCardDetails(((Card) session.getAttribute("card")).getCardId()));
                 isStateChanged = true;
-            } else modelAndView.addObject("message", "Swipe Out Failed, Try Again");
+            } else {
+                modelAndView.setViewName("metroSwipeOutput");
+                return modelAndView.addObject("message", "Swipe Out Failed, Try Again");
+            }
             return modelAndView;
         } catch (InvalidStationException | InvalidSwipeOutException e) {
+            modelAndView.setViewName("metroSwipeOutput");
             modelAndView.addObject("message", e.getMessage());
             return modelAndView;
         }

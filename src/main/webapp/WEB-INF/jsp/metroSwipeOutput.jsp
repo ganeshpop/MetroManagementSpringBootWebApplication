@@ -46,7 +46,7 @@
                 <div class="container-sm">
                     <div class="pricing-inner section-inner">
                         <div class="pricing-header text-center">
-                            <h2 class="section-title mt-0">Swipe In Status</h2>
+                            <h2 class="section-title mt-0">Swipe Status</h2>
                         </div>
                         <div class="pricing-tables-wrap">
                             <div class="pricing-table">

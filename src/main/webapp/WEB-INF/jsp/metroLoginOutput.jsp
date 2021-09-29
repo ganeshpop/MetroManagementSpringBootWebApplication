@@ -18,7 +18,7 @@
 <body class="is-boxed has-animations">
 
 
-<div class="is-boxed has-animations">a
+<div class="is-boxed has-animations">
     <div class="body-wrap,site-header">
 
 

@@ -102,11 +102,11 @@
                                             </li>
                                         </ul>
                                     </div>
-                                    </c:if>
                                     <div class="pricing-table-cta mb-8">
                                         <a class="button button-primary button-shadow button-block" href="menu">Go
                                             Home</a>
                                     </div>
+                                    </c:if>
                                 </div>
                             </div>
                         </div>
